@@ -26,7 +26,7 @@ export class UserController {
     @ApiBearerAuth()
     @ApiOkResponse()
     @Roles(["ADMIN"])
-    @Get('/profile/all')
+    @Get('/all')
     @UseGuards(IsAuthenticateGuard, IsAuthorizedGuard)
     @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
     @ApiForbiddenResponse({ type: SwaggerExceptionResponseDto })

@@ -5,12 +5,17 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
-    
+
     constructor(@InjectRepository(UserEntity) private readonly userEntityRepository: Repository<UserEntity>) {}
 
     async getUsers() {
-        return await this.userEntityRepository.find({
+        const users = await this.userEntityRepository.findOne({
+            where: { id: 1},
             relations: ['roles', 'roles.role'],
         });
+
+        console.log(users);
+
+        return users;
     }
 }

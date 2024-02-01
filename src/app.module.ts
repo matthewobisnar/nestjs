@@ -8,6 +8,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_PIPE } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtConfig } from './shared/jwts/jwt.config';
+import { PassportModule } from './passport/passport.module';
 
 @Module({
   imports: [
@@ -26,7 +27,8 @@ import { JwtConfig } from './shared/jwts/jwt.config';
       useClass: TypeOrmDatabaseConfig
     }),
     AuthenticationModule,
-    UserModule
+    UserModule,
+    PassportModule
   ],
   providers: [
     {
