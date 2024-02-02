@@ -9,6 +9,7 @@ import { APP_PIPE } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtConfig } from './shared/jwts/jwt.config';
 import { PassportModule } from './passport/passport.module';
+import { UserService } from './user/services/user/user.service';
 
 @Module({
   imports: [

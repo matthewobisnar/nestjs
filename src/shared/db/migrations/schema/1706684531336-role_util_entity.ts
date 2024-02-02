@@ -4,7 +4,6 @@ export class RoleUtilEntity1706684531336 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
 
-        queryRunner.query(`PRAGMA foreign_keys=on`);
         queryRunner.query(
             `CREATE TABLE IF NOT EXISTS role_util_entity (
                 id INTEGER PRIMARY KEY,

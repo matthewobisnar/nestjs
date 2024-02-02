@@ -1,4 +1,4 @@
-import { BeforeInsert, BeforeRemove, BeforeUpdate, Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { BaseActiveEntity } from "./base.entity";
 import { UserEntity } from "./user.entity";
 import { RoleUtilEntity } from "./role.util.entity";
@@ -12,14 +12,10 @@ export class UserRoleEntity extends BaseActiveEntity {
     @Column({name: 'user_id'})
     userId: number;
 
-    @Column({name: 'role_id'})
-    roleId: number;
+    @Column({name: 'role_name'})
+    roleName: string;
 
     @ManyToOne(() => UserEntity, user => user.roles)
     @JoinColumn({ name: 'user_id' })
-    user: UserEntity;
-
-    @OneToOne(() => RoleUtilEntity, role => role.role)
-    @JoinColumn({name: 'role_id'})
-    role: RoleUtilEntity
+    user: UserEntity
 }

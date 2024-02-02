@@ -14,13 +14,13 @@ export class AuthLocalStrategy extends PassportStrategy(Strategy) {
     async validate(email: string, password: string): Promise<any> {
 
         const loginDto: SigninUserRequestDto = { email, password };
-        const user = await this.passportService.validateUser(loginDto);
+        const authentictedUser = await this.passportService.validateUser(loginDto);
 
-        if (!user) {
+
+        if (!authentictedUser) {
           throw new UnauthorizedException('email or/and password is incorrect.');
         }
 
-        return user;
-
+        return authentictedUser;
       }
 }

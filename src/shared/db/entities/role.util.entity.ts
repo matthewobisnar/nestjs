@@ -13,7 +13,4 @@ export class RoleUtilEntity extends BaseActiveEntity {
 
     @Column({name: "role_desc"})
     roleDesc: string;
-
-    @OneToOne(() => UserRoleEntity, user => user.role)
-    role: UserRoleEntity
 }

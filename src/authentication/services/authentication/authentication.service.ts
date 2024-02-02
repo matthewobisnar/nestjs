@@ -34,11 +34,11 @@ export class AuthenticationService {
         
         const result: UserEntity = await this.userEntityRepository.save(userEntity);
 
-        if (!result) {
+        if (result != null) {
 
             const userRoleEntity: UserRoleEntity = this.userRoleEntityRepository.create({
                 userId: result.id,
-                roleId: 1,
+                roleName: 'USER',
                 createdAt: new Date(),
                 createdBy: result.email
             });
@@ -58,7 +58,7 @@ export class AuthenticationService {
 
         const employee = await this.userEntityRepository.findOne({
             where: {email: user.email} ,
-            relations: ['roles', 'roles.role'],
+            relations: ['roles'],
          });
 
          if (!employee) throw new UnauthorizedException('username and/or password is incorred.');
@@ -71,7 +71,7 @@ export class AuthenticationService {
             sub: employee.id, 
             firstname: employee.firstname, 
             lastname: employee.lastname,
-            roles: employee.roles.map(item => item.role.roleName.toUpperCase())
+            roles: employee.roles.map(item => item.roleName.toUpperCase())
         };
 
         return {
