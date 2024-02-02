@@ -20,7 +20,7 @@ export class PassportController {
     @Post('/local/signin')
     @UseGuards(AuthGuard('local'))
     @ApiCreatedResponse()
-    @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
+    @ApiUnauthorizedResponse({ type: () => SwaggerExceptionResponseDto })
     localAuthenticateUser (@Body() body: SigninUserRequestDto, @Req() req) {
         return this.passportService.authenticatedLocalUser(req.user);
     }

@@ -19,8 +19,8 @@ export class UserController {
     @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
     @ApiForbiddenResponse({ type: SwaggerExceptionResponseDto })
     @Get('profile/:id')
-    getUserProfile(@Param('id') id: string) {
-        return id;
+    getUserProfile(@Param('id') id: number) {
+        return this.userService.getUserById(id);
     }
 
     @ApiBearerAuth()

@@ -1,14 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsString } from "class-validator";
 
 export class SwaggerExceptionResponseDto {
 
-    @ApiProperty()
+    @ApiProperty({type: String})
     message: string;
 
-    @ApiProperty()
+    @ApiProperty({type: String})
     error : string;
 
-    @ApiProperty()
+    @ApiProperty({type: String})
     statusCode: number;
 }

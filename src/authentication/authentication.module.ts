@@ -6,9 +6,11 @@ import { UserEntity } from '../shared/db/entities/user.entity';
 import { UserRoleEntity } from 'src/shared/db/entities/user.role.entity';
 import { RoleUtilEntity } from 'src/shared/db/entities/role.util.entity';
 import { UtilityService } from './services/utility/utility.service';
+import { UserModule } from 'src/user/user.module';
 
 @Module({
   imports:[
+    UserModule,
     TypeOrmModule.forFeature([
       UserEntity, 
       UserRoleEntity, 

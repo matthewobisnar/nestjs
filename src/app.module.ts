@@ -28,7 +28,6 @@ import { UserService } from './user/services/user/user.service';
       useClass: TypeOrmDatabaseConfig
     }),
     AuthenticationModule,
-    UserModule,
     PassportModule
   ],
   providers: [
