@@ -5,10 +5,10 @@
 FROM node:18.18.1-alpine AS development
 
 # Update the list of available packages
-RUN apk update
+# RUN apk update
 
 # Install SQLite3
-RUN apk add sqlite
+# RUN apk add sqlite
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -19,13 +19,13 @@ COPY --chown=node:node package*.json ./
 # Install app dependencies
 RUN npm install --force 
 
-RUN chmod -R 777 node_modules
+# RUN chmod -R 777 node_modules
 
 # Bundle app source
 COPY --chown=node:node . .
 
 # Use the maintainer user from the image (instead of the root user)
-USER node
+# USER node
 
 # -------------------------------------------------------------
 # BUILD FOR PRODUCTION

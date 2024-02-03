@@ -1,6 +1,6 @@
 version: '3'
 services:
- app:
+  nestjs:
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,5 +13,47 @@ services:
     ports:
       - "3000:3000"
     environment:
+      - CHOKIDAR_USEPOLLING=true
       - NODE_ENV=development
-    command: npm run migration:up:dev && npm run start:dev
+    command: npm run start:dev
+
+  prometheus:
+    image: prom/prometheus:v2.36.2
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command: '--config.file=/etc/prometheus/prometheus.yml'
+
+#  influxdb:
+#     image: influxdb:1.8
+#     ports:
+#       - '8086:8086'
+#     environment:
+#       - INFLUXDB_DB=k6
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - '3001:3000'
+    volumes:
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards
+    environment:
+      GF_INSTALL_PLUGINS: grafana-piechart-panel
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_BASIC_ENABLED: "false"
+    depends_on:
+      - prometheus
+
+#  k6:
+#     image: grafana/k6
+#     extra_hosts:
+#       - "host.docker.internal:host-gateway"
+#     ports:
+#       - '6565:6565'
+#     volumes:
+#       - ./monitoring/k6s/scripts:/scripts
+#     environment:
+#       - K6_OUT=influxdb=http://influxdb:8086/k6
