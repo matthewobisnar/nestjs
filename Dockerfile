@@ -14,7 +14,8 @@ FROM node:18.18.1-alpine AS development
 WORKDIR /usr/src/app
 
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
-COPY --chown=node:node package*.json ./
+# COPY --chown=node:node package*.json ./
+COPY package*.json ./
 
 # Install app dependencies
 RUN npm install --force 
@@ -22,7 +23,9 @@ RUN npm install --force
 # RUN chmod -R 777 node_modules
 
 # Bundle app source
-COPY --chown=node:node . .
+# COPY --chown=node:node . .
+COPY . .
+
 
 # Use the maintainer user from the image (instead of the root user)
 # USER node
