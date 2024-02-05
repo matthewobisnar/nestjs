@@ -57,13 +57,14 @@ export class TicketService {
     async updateTicket(id: number, ticketEntity: Partial<TicketEntity>) {
        
         try {
+           const ticket = await this.ticketEntityRepository.findOne({where: {id}});
 
-            const ticket = this.ticketEntityRepository.create({
-                id, 
-                ...ticketEntity,
-                updatedAt: new Date(), 
-                updatedBy: id.toString()
-            });
+           const object = {
+            updatedAt: new Date(), 
+            updatedBy: id.toString()
+           }
+
+           Object.assign(ticket, object, ticketEntity);
 
             return await this.ticketEntityRepository.save(ticket);
         } catch (e) {

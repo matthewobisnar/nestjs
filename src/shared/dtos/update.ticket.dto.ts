@@ -1,25 +1,25 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { IsDefined, IsNotEmpty, IsString } from "class-validator"
+import { IsDefined, IsNotEmpty, IsOptional, IsString } from "class-validator"
 
 export class UpdateTicketDto {
     @IsString()
-    @IsNotEmpty()
-    @IsDefined()
+ 
+    @IsOptional()
     @ApiProperty()
     title: string
 
     @IsNotEmpty()
-    @IsDefined()
+    @IsOptional()
     @ApiProperty()
     status: number
     
     @IsNotEmpty()
-    @IsDefined()
+    @IsOptional()
     @ApiProperty()
     assignee: number
 
     @IsNotEmpty()
-    @IsDefined()
+    @IsOptional()
     @ApiProperty()
     description: string
 }
