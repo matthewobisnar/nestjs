@@ -21,6 +21,7 @@
     "test:e2e": "cross-env NODE_ENV=test jest --config ./test/jest-e2e.json",
     "migration:create": "cross-var ts-node node_modules/typeorm/cli.js migration:create ./src/shared/db/migrations/schema/$npm_config_name",
     "migration:up:dev": "cross-env NODE_ENV=development cross-var ts-node node_modules/typeorm/cli.js migration:run -d ./src/shared/db/connections/type.orm.database.migration.source.ts",
+    "migration:up:prod": "cross-env NODE_ENV=production cross-var ts-node node_modules/typeorm/cli.js migration:run -d ./src/shared/db/connections/type.orm.database.migration.source.ts",
     "migration:down:dev": "cross-env NODE_ENV=development cross-var ts-node node_modules/typeorm/cli.js migration:revert -d ./src/shared/db/connections/type.orm.database.migration.source.ts",
     "migration:up:local": "cross-env NODE_ENV=local cross-var ts-node node_modules/typeorm/cli.js migration:run -d ./src/shared/db/connections/type.orm.database.migration.source.ts",
     "migration:down:local": "cross-env NODE_ENV=local cross-var ts-node node_modules/typeorm/cli.js migration:revert -d ./src/shared/db/connections/type.orm.database.migration.source.ts",
