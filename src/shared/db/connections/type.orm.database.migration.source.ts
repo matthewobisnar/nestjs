@@ -4,7 +4,7 @@ import { SeederOptions, runSeeders } from "typeorm-extension";
 
 const dotenv = require('dotenv');
 const env = process.env.NODE_ENV || 'development';
-const result = dotenv.config({ path: `.env.${env}` });
+const result = dotenv.config({ path: `./env/.env.${env}` });
 
 if (result.error) {
   throw result.error;
