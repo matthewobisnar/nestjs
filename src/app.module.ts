@@ -20,7 +20,7 @@ import { TicketModule } from './ticket/ticket.module';
     }),
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: `.env.${process.env.NODE_ENV}`,
+      envFilePath: `./env/.env.${process.env.NODE_ENV}`,
       validationSchema: schemaValidation
     }),
     TypeOrmModule.forRootAsync({
