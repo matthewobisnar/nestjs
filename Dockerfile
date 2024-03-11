@@ -41,10 +41,10 @@ FROM node:18.18.1-alpine AS production
 
 WORKDIR /usr/src/app
 
-COPY --from=build /usr/src/app/node_modules ./node_modules
-COPY --from=build /usr/src/app/package*.json ./
+# COPY --from=build /usr/src/app/node_modules ./node_modules
+# COPY --from=build /usr/src/app/package*.json ./
 COPY --from=build /usr/src/app/dist ./dist
-COPY --from=build /usr/src/app/env ./
+COPY --from=build /usr/src/app/env ./env
 COPY --from=build /usr/src/app/production.sqlite ./
 
 USER node
