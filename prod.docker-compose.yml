@@ -17,6 +17,21 @@ services:
     networks:
       - nestjs_network_prod
     command: npm run start:prod
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres_nestjs
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - nestjs_network_prod
 
 networks:
   nestjs_network_prod:

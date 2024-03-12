@@ -45,6 +45,3 @@ COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/env ./env
 
 # USER node
-
-# CMD ["sh", "-c,", "npm run migration:up:prod", "node", "dist/main.js" ]
- 

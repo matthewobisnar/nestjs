@@ -6,7 +6,7 @@ export class RoleUtilEntity1706684531336 implements MigrationInterface {
 
         queryRunner.query(
             `CREATE TABLE IF NOT EXISTS role_util_entity (
-                id INTEGER PRIMARY KEY,
+                id serial4 NOT NULL,
                 role_name TEXT,
                 role_desc TEXT,
                 created_at DATE,
@@ -14,7 +14,8 @@ export class RoleUtilEntity1706684531336 implements MigrationInterface {
                 updated_at DATE,
                 updated_by TEXT,
                 deleted_at DATE,
-                deleted_by TEXT
+                deleted_by TEXT,
+                CONSTRAINT role_util_entity_pk PRIMARY KEY (id)
             )
         `);
     }
