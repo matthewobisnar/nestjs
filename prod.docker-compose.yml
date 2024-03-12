@@ -2,7 +2,7 @@ version: '3'
 services:
   nestjs:
     image: nestjs_image_prod
-    container_name: nestjs_conainer_prod
+    container_name: nestjs_container_prod
     build:
       context: .
       dockerfile: Dockerfile

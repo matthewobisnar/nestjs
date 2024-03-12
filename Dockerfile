@@ -24,8 +24,6 @@ COPY --from=development /usr/src/app/node_modules ./node_modules
 
 COPY . .
 
-# RUN npm run migration:up:prod
-
 RUN npm run build
 
 # Running `npm ci` removes the existing node_modules directory and passing in 
@@ -45,9 +43,8 @@ COPY --from=build /usr/src/app/node_modules ./node_modules
 COPY --from=build /usr/src/app/package*.json ./
 COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/env ./env
-COPY --from=build /usr/src/app/production.sqlite ./
 
-USER node
+# USER node
 
-CMD [ "node", "dist/main.js" ]
+# CMD ["sh", "-c,", "npm run migration:up:prod", "node", "dist/main.js" ]
  
