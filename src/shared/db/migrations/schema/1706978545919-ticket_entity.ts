@@ -17,8 +17,6 @@ export class TicketEntity1706978545919 implements MigrationInterface {
                 assignee int4 NOT NULL,
                 description varchar NOT NULL,
                 CONSTRAINT "PK_4c23bb38e4d566808a73a5af6ec" PRIMARY KEY (id),
-                CONSTRAINT "REL_872bf60722bdaff3118a1d2342" UNIQUE (status),
-                CONSTRAINT "REL_a60cb0c083243ffb156246ec0e" UNIQUE (assignee),
                 CONSTRAINT "FK_872bf60722bdaff3118a1d2342c" FOREIGN KEY (status) REFERENCES ticket_status(id),
                 CONSTRAINT "FK_a60cb0c083243ffb156246ec0e1" FOREIGN KEY (assignee) REFERENCES user_entity(id)
             );`
