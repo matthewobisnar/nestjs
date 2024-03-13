@@ -1,6 +1,6 @@
 # BUILD FOR LOCAL DEVELOPMENT --------------------------------
 
-FROM node:18.18.1-alpine AS development
+FROM node:18-slim AS development
 
 WORKDIR /usr/src/app
 
@@ -10,11 +10,11 @@ RUN npm install
 
 COPY . .
 
-# USER node
+USER node
 
 # BUILD FOR PRODUCTION ----------------------------------------
 
-FROM node:18.18.1-alpine as build
+FROM node:18-slim as build
 
 WORKDIR /usr/src/app
 
@@ -35,7 +35,7 @@ USER node
 
 # PRODUCTION -----------------------------------------------
 
-FROM node:18.18.1-alpine AS production
+FROM node:18-slim AS production
 
 WORKDIR /usr/src/app
 
@@ -44,4 +44,6 @@ COPY --from=build /usr/src/app/package*.json ./
 COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/env ./env
 
-# USER node
+USER node
+
+CMD ["node", "dist/main.js"]

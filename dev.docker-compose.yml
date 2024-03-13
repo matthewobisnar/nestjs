@@ -17,51 +17,20 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
       - NODE_ENV=development
-    networks:
-      - nestjs_network_dev
     command: npm run start:dev
 
-networks:
-  nestjs_network_dev:
-    driver: bridge
-
-  # prometheus:
-  #   image: prom/prometheus:v2.36.2
-  #   ports:
-  #     - "9090:9090"
-  #   volumes:
-  #     - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-  #   command: '--config.file=/etc/prometheus/prometheus.yml'
-
- # influxdb:
- #   image: influxdb:1.8
- #   ports:
- #     - '8086:8086'
- #   environment:
- #     - INFLUXDB_DB=k6
-
- # grafana:
- #   image: grafana/grafana
-  #   ports:
-  #     - '3001:3000'
-  #   volumes:
-  #     - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
-  #     - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards
-  #   environment:
-  #     GF_INSTALL_PLUGINS: grafana-piechart-panel
-  #     GF_SECURITY_ADMIN_USER: admin
-  #     GF_SECURITY_ADMIN_PASSWORD: admin
-  #     GF_AUTH_BASIC_ENABLED: "false"
-  #   depends_on:
-  #     - prometheus
-
-#  k6:
-#     image: grafana/k6
-#     extra_hosts:
-#       - "host.docker.internal:host-gateway"
-#     ports:
-#       - '6565:6565'
-#     volumes:
-#       - ./monitoring/k6s/scripts:/scripts
-#     environment:
-#       - K6_OUT=influxdb=http://influxdb:8086/k6
+  migration: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    env_file:
+      - ./env/.env.development
+    ports:
+      - "3001:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
+    command: npx typeorm migration:run -d  dist/shared/db/connections/type.orm.database.migration.source.js 
+    depends_on:
+      - nestjs

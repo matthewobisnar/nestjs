@@ -23,6 +23,15 @@ export class UserController {
         return this.userService.getUserById(id);
     }
 
+
+    @ApiOkResponse()
+    @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
+    @ApiForbiddenResponse({ type: SwaggerExceptionResponseDto })
+    @Get('profile/hello')
+    getUserProfileHello() {
+        return "Hello World!";
+    }
+
     @ApiBearerAuth()
     @ApiOkResponse()
     @Roles(["ADMIN"])
