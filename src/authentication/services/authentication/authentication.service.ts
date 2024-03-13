@@ -21,6 +21,8 @@ export class AuthenticationService {
 
         const isUserExists = await this.userEntityRepository.countBy({ email: user.email });
 
+        console.log(isUserExists);
+
         if (isUserExists > 0) {
             throw new BadRequestException(`${user.email} is already exists.`)
         }

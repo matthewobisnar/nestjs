@@ -25,16 +25,12 @@ export class UserController {
 
 
     @ApiOkResponse()
-    @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
-    @ApiForbiddenResponse({ type: SwaggerExceptionResponseDto })
     @Get('profile/hello')
     getUserProfileHello() {
         return "Hello World!";
     }
 
     @ApiOkResponse()
-    @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
-    @ApiForbiddenResponse({ type: SwaggerExceptionResponseDto })
     @Get('profile/greeting')
     getUserProfileGreeting() {
         return "Hello Greeting!";
