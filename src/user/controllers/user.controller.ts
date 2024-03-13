@@ -32,6 +32,15 @@ export class UserController {
         return "Hello World!";
     }
 
+    @ApiOkResponse()
+    @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
+    @ApiForbiddenResponse({ type: SwaggerExceptionResponseDto })
+    @Get('profile/greeting')
+    getUserProfileGreeting() {
+        return "Hello Greeting!";
+    }
+
+
     @ApiBearerAuth()
     @ApiOkResponse()
     @Roles(["ADMIN"])
