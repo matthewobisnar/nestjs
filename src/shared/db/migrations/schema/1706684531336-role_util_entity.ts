@@ -5,7 +5,7 @@ export class RoleUtilEntity1706684531336 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
 
         queryRunner.query(
-            `CREATE TABLE role_util_entity (
+            `CREATE TABLE IF NOT EXISTS role_util_entity (
                 created_at timestamp NOT NULL,
                 created_by varchar NOT NULL,
                 updated_at timestamp NULL,
