@@ -3,8 +3,6 @@ services:
   nestjs:
     image: ghcr.io/matthewobisnar/nestjs_image_prod:latest
     container_name: nestjs_container_prod
-    env_file:
-      - ./env/.env.production
     ports:
       - "3000:3000"
     environment:
@@ -12,8 +10,6 @@ services:
 
   migration:
     image: ghcr.io/matthewobisnar/nestjs_image_prod:latest
-    env_file:
-      - ./env/.env.production
     ports:
       - "3001:3000"
     environment:
