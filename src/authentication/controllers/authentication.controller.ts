@@ -28,7 +28,7 @@ export class AuthenticationController {
     @Post('/test-2')
     @ApiCreatedResponse()
     @ApiBadRequestResponse({type: SwaggerExceptionResponseDto})
-    test() {
+    test2() {
        return "test 2"
     }
     
