@@ -23,20 +23,6 @@ export class UserController {
         return this.userService.getUserById(id);
     }
 
-
-    @ApiOkResponse()
-    @Get('profile/hello')
-    getUserProfileHello() {
-        return "Hello World!";
-    }
-
-    @ApiOkResponse()
-    @Get('profile/greeting')
-    getUserProfileGreeting() {
-        return "Hello Greeting!";
-    }
-
-
     @ApiBearerAuth()
     @ApiOkResponse()
     @Roles(["ADMIN"])
