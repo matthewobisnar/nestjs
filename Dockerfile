@@ -26,7 +26,7 @@ FROM node:18-slim AS production
 WORKDIR /usr/src/app
 
 COPY --from=build /usr/src/app/node_modules ./node_modules
-COPY --from=build /usr/src/app/package*.json ./
+# COPY --from=build /usr/src/app/package*.json ./
 COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/env ./env
 
