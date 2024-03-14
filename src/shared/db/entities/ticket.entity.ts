@@ -4,7 +4,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { TicketStatus } from "./ticket.status.entity";
 import { UserEntity } from "./user.entity";
 
-@Entity({name: 'ticket_entity'})
+@Entity({schema: 'public', name: 'ticket_entity'})
 export class TicketEntity extends BaseActiveEntity {
 
     @ApiProperty()
@@ -31,7 +31,7 @@ export class TicketEntity extends BaseActiveEntity {
     @JoinColumn({name: 'status'})
     statusUtilName: TicketStatus
 
-    @OneToOne(() => UserEntity, (assigneTicket) => assigneTicket.ticket)
-    @JoinColumn({name: 'assignee'})
-    assigneTicket: UserEntity
+    // @OneToOne(() => UserEntity, (assigneTicket) => assigneTicket.ticket)
+    // @JoinColumn({name: 'assignee'})
+    // assigneTicket: UserEntity
 }

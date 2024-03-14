@@ -3,7 +3,7 @@ import { BaseActiveEntity } from "./base.entity";
 import { UserRoleEntity } from "./user.role.entity";
 import { TicketEntity } from "./ticket.entity";
 
-@Entity({name: "user_entity"})
+@Entity({schema: 'public', name: "user_entity"})
 export class UserEntity extends BaseActiveEntity {
 
     @PrimaryGeneratedColumn()
@@ -24,7 +24,7 @@ export class UserEntity extends BaseActiveEntity {
     @OneToMany(() => UserRoleEntity, roles => roles.user, { onDelete: 'CASCADE' })
     roles: UserRoleEntity[];
 
-    @OneToOne(() => TicketEntity, ticket => ticket.assigneTicket)
-    @JoinColumn()
-    ticket: TicketEntity
+    // @OneToOne(() => TicketEntity, ticket => ticket.assigneTicket)
+    // @JoinColumn()
+    // ticket: TicketEntity
 }

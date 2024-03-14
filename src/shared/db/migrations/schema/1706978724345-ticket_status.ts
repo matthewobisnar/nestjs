@@ -4,7 +4,7 @@ export class TicketStatus1706978724345 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         queryRunner.query(`
-            CREATE TABLE IF NOT EXISTS ticket_status (
+            CREATE TABLE IF NOT EXISTS public.ticket_status (
                 created_at timestamp NOT NULL,
                 created_by varchar NOT NULL,
                 updated_at timestamp NULL,

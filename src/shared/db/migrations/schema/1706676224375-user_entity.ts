@@ -5,7 +5,7 @@ export class UserEntity1706676224375 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
 
         queryRunner.query(`
-            CREATE TABLE IF NOT EXISTS user_entity (
+            CREATE TABLE IF NOT EXISTS public.user_entity (
                 id serial4 NOT NULL,
                 firstname TEXT,
                 lastname TEXT,

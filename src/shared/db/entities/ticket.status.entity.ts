@@ -2,7 +2,7 @@ import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn
 import { BaseActiveEntity } from "./base.entity"
 import { TicketEntity } from "./ticket.entity"
 
-@Entity({name: 'ticket_status'})
+@Entity({schema: 'public', name: 'ticket_status'})
 export class TicketStatus extends BaseActiveEntity {
 
     @PrimaryGeneratedColumn()
