@@ -24,6 +24,13 @@ export class AuthenticationController {
     test() {
        return "test"
     }
+
+    @Post('/test-2')
+    @ApiCreatedResponse()
+    @ApiBadRequestResponse({type: SwaggerExceptionResponseDto})
+    test() {
+       return "test 2"
+    }
     
     @Post('/signin')
     @ApiOkResponse()
