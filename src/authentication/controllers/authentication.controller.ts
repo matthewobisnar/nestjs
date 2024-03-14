@@ -23,7 +23,8 @@ export class AuthenticationController {
     @ApiBadRequestResponse({type: SwaggerExceptionResponseDto})
     test() {
        return "test"
-
+    }
+    
     @Post('/signin')
     @ApiOkResponse()
     @ApiUnauthorizedResponse({type: SwaggerExceptionResponseDto})
