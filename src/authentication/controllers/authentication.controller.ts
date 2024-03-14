@@ -18,6 +18,12 @@ export class AuthenticationController {
        return this.authenticationService.registerUser({...body});
     }
 
+    @Post('/test')
+    @ApiCreatedResponse()
+    @ApiBadRequestResponse({type: SwaggerExceptionResponseDto})
+    test() {
+       return "test"
+
     @Post('/signin')
     @ApiOkResponse()
     @ApiUnauthorizedResponse({type: SwaggerExceptionResponseDto})
