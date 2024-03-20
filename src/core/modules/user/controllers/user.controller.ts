@@ -3,7 +3,7 @@ import { ApiBearerAuth, ApiForbiddenResponse, ApiOkResponse, ApiTags, ApiUnautho
 import { Roles } from 'src/shared/decorators/roles.decorator';
 import { IsAuthenticateGuard } from 'src/authentication/guards/is.authenticate.guard';
 import { IsAuthorizedGuard } from 'src/authentication/guards/is.authorized.guard';
-import { SwaggerExceptionResponseDto } from 'src/shared/swagger/swagger.exception.response.dto';
+import { SwaggerExceptionResponseDto } from 'src/shared/configs/swagger/swagger.exception.response.dto';
 import { UserService } from '../services/user/user.service';
 
 @ApiTags('User Profile')

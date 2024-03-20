@@ -3,7 +3,7 @@ import { SigninUserRequestDto } from 'src/shared/dtos/signin.user.request.dto';
 import { SignupUserRequestDto } from 'src/shared/dtos/signup.user.request.dto';
 import { AuthenticationService } from 'src/authentication/services/authentication/authentication.service';
 import { ApiBadRequestResponse, ApiCreatedResponse, ApiForbiddenResponse, ApiOkResponse, ApiOperation, ApiResponse, ApiTags, ApiUnauthorizedResponse } from '@nestjs/swagger';
-import { SwaggerExceptionResponseDto } from 'src/shared/swagger/swagger.exception.response.dto';
+import { SwaggerExceptionResponseDto } from 'src/shared/configs/swagger/swagger.exception.response.dto';
 
 @ApiTags('Custom Authentication')
 @Controller('authentication')

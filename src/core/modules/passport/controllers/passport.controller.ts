@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post, Req, UseGuards } from '@nestjs/comm
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiCreatedResponse, ApiTags, ApiUnauthorizedResponse } from '@nestjs/swagger';
 import { SigninUserRequestDto } from 'src/shared/dtos/signin.user.request.dto';
-import { SwaggerExceptionResponseDto } from 'src/shared/swagger/swagger.exception.response.dto';
+import { SwaggerExceptionResponseDto } from 'src/shared/configs/swagger/swagger.exception.response.dto';
 import { PassportService } from '../services/passport/passport.service';
 import { Roles } from 'src/shared/decorators/roles.decorator';
 import { AuthJwtGuard } from '../strategies/jwt/auth.jwt.guard';

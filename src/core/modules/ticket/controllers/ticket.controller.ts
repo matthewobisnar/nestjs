@@ -4,7 +4,7 @@ import { TicketService } from '../services/ticket/ticket.service';
 import { Roles } from 'src/shared/decorators/roles.decorator';
 import { IsAuthenticateGuard } from 'src/authentication/guards/is.authenticate.guard';
 import { IsAuthorizedGuard } from 'src/authentication/guards/is.authorized.guard';
-import { SwaggerExceptionResponseDto } from 'src/shared/swagger/swagger.exception.response.dto';
+import { SwaggerExceptionResponseDto } from 'src/shared/configs/swagger/swagger.exception.response.dto';
 import { CreateTicketDto } from 'src/shared/dtos/create.ticket.dto';
 import { TicketEntity } from 'src/shared/db/entities/ticket.entity';
 import { UpdateTicketDto } from 'src/shared/dtos/update.ticket.dto';
