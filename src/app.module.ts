@@ -4,16 +4,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { APP_PIPE } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
-import { PassportModule } from './core/modules/passport/passport.module';
-import { JwtConfig } from './shared/configs/jwts/jwt.config';
+import { JwtAccessConfig } from './shared/configs/jwts/jwt.access.config';
 import { TypeOrmDatabaseConfig } from './shared/configs/typeorm/type.orm.database.config';
+import { AuthenticationModule } from './core/modules/authentication/authentication.module';
 
 @Module({
   imports: [
     JwtModule.registerAsync({
       global: true,
       imports: [ConfigModule],
-      useClass: JwtConfig,
+      useClass: JwtAccessConfig,
     }),
     ConfigModule.forRoot({
       isGlobal: true,
@@ -24,7 +24,7 @@ import { TypeOrmDatabaseConfig } from './shared/configs/typeorm/type.orm.databas
       imports: [ConfigModule],
       useClass: TypeOrmDatabaseConfig
     }),
-    PassportModule
+    AuthenticationModule
   ],
   providers: [
     {

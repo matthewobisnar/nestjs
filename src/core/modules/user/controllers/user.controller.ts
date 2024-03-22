@@ -4,9 +4,7 @@ import { Roles } from 'src/shared/decorators/roles.decorator';
 import { SwaggerExceptionResponseDto } from 'src/shared/configs/swagger/swagger.exception.response.dto';
 import { UserService } from '../services/user/user.service';
 import { SignupUserRequestDto } from 'src/shared/dtos/signup.user.request.dto';
-import { AuthJwtGuard } from '../../passport/strategies/jwt/auth.jwt.guard';
 import { AuthGuard } from '@nestjs/passport';
-import { AuthCustomGuard } from '../../passport/strategies/jwt/auth.custom.guard';
 
 @ApiTags('User Profile')
 @Controller('user')
@@ -16,11 +14,11 @@ export class UserController {
     
     @ApiOkResponse()
     @ApiBearerAuth()
+    @Get('profile/:id')
     @Roles(["USER", "ADMIN"])
-    @UseGuards(AuthGuard('jwt'), AuthJwtGuard)
+    // @UseGuards(AuthGuard('jwt'), AuthJwtGuard)
     @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
     @ApiForbiddenResponse({ type: SwaggerExceptionResponseDto })
-    @Get('profile/:id')
     getUserProfile(@Param('id') id: number) {
         return this.userService.getUserById(id);
     }
@@ -29,7 +27,7 @@ export class UserController {
     @ApiOkResponse()
     @Get('/all')
     @Roles(["USER"])
-    @UseGuards(AuthGuard('jwt'), AuthJwtGuard, AuthCustomGuard)    
+    // @UseGuards(AuthGuard('jwt'), AuthJwtGuard)   
     @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
     @ApiForbiddenResponse({ type: SwaggerExceptionResponseDto })
     getUsers() {
@@ -38,7 +36,6 @@ export class UserController {
 
     @Post('/signup')
     @ApiCreatedResponse()
-    // @UseGuards(AuthGuard('jwt'), AuthJwtGuard)  
     @ApiBadRequestResponse({type: SwaggerExceptionResponseDto})
     signup(@Body() body: SignupUserRequestDto) {
        return this.userService.registerUser({...body});
