@@ -13,12 +13,11 @@ export class RefreshTokenStrategy extends PassportStrategy(Strategy, 'jwt-refres
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
       secretOrKey: jwtRefreshConfig.createJwtOptions().secret,
-      passReqToCallback: true
     });
   }
 
-  validate(req: Request, payload: any) {
-    const refreshToken = req.get('Authorization').replace('Bearer', '').trim();
-    return { ...payload, refreshToken };
+  validate(payload: any) {
+    // const refreshToken = req.get('Authorization').replace('Bearer', '').trim();
+    return { ...payload };
   }
 }

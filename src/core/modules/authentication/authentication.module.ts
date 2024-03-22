@@ -12,9 +12,11 @@ import { AuthStrategyJwt } from './strategies/AuthJwt/auth.strategy.jwt';
 import { RefreshTokenStrategy } from './strategies/RefreshJwt/refresh.strategy.jwt';
 import { JwtAccessConfig } from 'src/shared/configs/jwts/jwt.access.config';
 import { JwtRefreshConfig } from 'src/shared/configs/jwts/jwt.refresh.config';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports:[
+    JwtModule.register({}),
     UserModule,
     PassportModule,
     TypeOrmModule.forFeature([

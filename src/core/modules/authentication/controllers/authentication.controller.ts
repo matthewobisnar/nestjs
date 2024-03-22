@@ -5,8 +5,8 @@ import { SwaggerExceptionResponseDto } from 'src/shared/configs/swagger/swagger.
 import { SigninUserRequestDto } from 'src/shared/dtos/signin.user.request.dto';
 import { LocalAuthGuard } from '../strategies/local/LocalAuthGuard';
 import { AuthJwtAccessGuard } from '../strategies/AuthJwt/JwtAuthGuard';
-import { AuthJwtRefreshGuard } from '../strategies/RefreshJwt/JwtRefreshAuthGuard';
 import { TokenResponseDto } from 'src/shared/dtos/token.response.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('Authentication')
 @Controller('authentication')
@@ -35,7 +35,7 @@ export class AuthenticationController {
   }
 
   @Post('/refresh')
-  @UseGuards(AuthJwtRefreshGuard)
+  @UseGuards(AuthGuard('jwt-refresh'))
   @ApiBearerAuth()
   @ApiCreatedResponse()
   @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
