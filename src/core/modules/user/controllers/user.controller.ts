@@ -37,7 +37,7 @@ export class UserController {
 
     @Post('/signup')
     @ApiCreatedResponse()
-    @UseGuards(AuthGuard('jwt'), AuthJwtGuard)  
+    // @UseGuards(AuthGuard('jwt'), AuthJwtGuard)  
     @ApiBadRequestResponse({type: SwaggerExceptionResponseDto})
     signup(@Body() body: SignupUserRequestDto) {
        return this.userService.registerUser({...body});
