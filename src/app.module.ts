@@ -7,7 +7,6 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from './core/modules/passport/passport.module';
 import { JwtConfig } from './shared/configs/jwts/jwt.config';
 import { TypeOrmDatabaseConfig } from './shared/configs/typeorm/type.orm.database.config';
-import { TicketModule } from './core/modules/ticket/ticket.module';
 
 @Module({
   imports: [
@@ -25,8 +24,7 @@ import { TicketModule } from './core/modules/ticket/ticket.module';
       imports: [ConfigModule],
       useClass: TypeOrmDatabaseConfig
     }),
-    PassportModule,
-    TicketModule
+    PassportModule
   ],
   providers: [
     {
