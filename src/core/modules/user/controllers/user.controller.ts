@@ -6,6 +6,7 @@ import { UserService } from '../services/user/user.service';
 import { SignupUserRequestDto } from 'src/shared/dtos/signup.user.request.dto';
 import { AuthJwtGuard } from '../../passport/strategies/jwt/auth.jwt.guard';
 import { AuthGuard } from '@nestjs/passport';
+import { AuthCustomGuard } from '../../passport/strategies/jwt/auth.custom.guard';
 
 @ApiTags('User Profile')
 @Controller('user')
@@ -28,7 +29,7 @@ export class UserController {
     @ApiOkResponse()
     @Get('/all')
     @Roles(["USER"])
-    @UseGuards(AuthGuard('jwt'), AuthJwtGuard)    
+    @UseGuards(AuthGuard('jwt'), AuthJwtGuard, AuthCustomGuard)    
     @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
     @ApiForbiddenResponse({ type: SwaggerExceptionResponseDto })
     getUsers() {

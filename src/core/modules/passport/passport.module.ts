@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { PassportController } from './controllers/passport.controller';
 import { PassportService } from './services/passport/passport.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthLocalStrategy } from './strategies/local/auth.local.strategy';
 import { AuthJwtStrategy } from './strategies/jwt/auth.jwt.strategy';
 import { UserModule } from '../user/user.module';
 import { UserEntity } from 'src/infrastructure/entities/user.entity';
@@ -20,6 +19,6 @@ import { RoleUtilEntity } from 'src/infrastructure/entities/role.util.entity';
     ])
   ],
   controllers: [PassportController],
-  providers: [PassportService, AuthLocalStrategy, AuthJwtStrategy]
+  providers: [PassportService, AuthJwtStrategy]
 })
 export class PassportModule {}

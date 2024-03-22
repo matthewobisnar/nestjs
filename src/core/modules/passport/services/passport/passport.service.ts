@@ -40,6 +40,7 @@ export class PassportService {
     }
 
     authenticatedLocalUser = async (payload: any) => payload;
+    
     authenticatedUserWithJwt = async (payload: any) => ({
         access_token: this.jwtService.sign(payload),
     });

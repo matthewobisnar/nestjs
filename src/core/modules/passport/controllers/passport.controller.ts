@@ -16,16 +16,8 @@ export class PassportController {
         private readonly userService: UserService
     ) {}
 
-    @Post('/local/signin')
-    @UseGuards(AuthGuard('local'))
-    @ApiCreatedResponse()
-    @ApiUnauthorizedResponse({ type: () => SwaggerExceptionResponseDto })
-    localAuthenticateUser (@Body() body: SigninUserRequestDto, @Req() req) {
-        return this.passportService.authenticatedLocalUser(req.user);
-    }
-
     @Post('/jwt/signin')
-    @UseGuards(AuthGuard('local'))
+    @UseGuards(AuthGuard('jwt'))
     @ApiCreatedResponse()
     @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
     jwtAuthenticateUser (@Body() body: SigninUserRequestDto, @Req() req) {
