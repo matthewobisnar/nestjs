@@ -1,9 +1,9 @@
 import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiForbiddenResponse, ApiOkResponse, ApiTags, ApiUnauthorizedResponse } from '@nestjs/swagger';
 import { Roles } from 'src/shared/decorators/roles.decorator';
-import { IsAuthenticateGuard } from 'src/authentication/guards/is.authenticate.guard';
-import { IsAuthorizedGuard } from 'src/authentication/guards/is.authorized.guard';
 import { SwaggerExceptionResponseDto } from 'src/shared/configs/swagger/swagger.exception.response.dto';
+import { IsAuthenticateGuard } from '../../authentication/guards/is.authenticate.guard';
+import { IsAuthorizedGuard } from '../../authentication/guards/is.authorized.guard';
 import { UserService } from '../services/user/user.service';
 
 @ApiTags('User Profile')

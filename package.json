@@ -19,13 +19,12 @@
     "test:cov": "cross-env NODE_ENV=test jest --coverage",
     "test:debug": "cross-env NODE_ENV=test node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "cross-env NODE_ENV=test jest --config ./test/jest-e2e.json",
-    "migration:create": "cross-var ts-node node_modules/typeorm/cli.js migration:create ./src/shared/db/migrations/schema/$npm_config_name",
-    "migration:up:dev": "cross-env NODE_ENV=development cross-var ts-node node_modules/typeorm/cli.js migration:run -d ./src/shared/db/connections/type.orm.database.migration.source.ts",
-    "migration:up:prod": "cross-env NODE_ENV=production cross-var ts-node node_modules/typeorm/cli.js migration:run -d ./src/shared/db/connections/type.orm.database.migration.source.ts",
-    "migration:down:dev": "cross-env NODE_ENV=development cross-var ts-node node_modules/typeorm/cli.js migration:revert -d ./src/shared/db/connections/type.orm.database.migration.source.ts",
-    "migration:up:local": "cross-env NODE_ENV=local cross-var ts-node node_modules/typeorm/cli.js migration:run -d ./src/shared/db/connections/type.orm.database.migration.source.ts",
-    "migration:down:local": "cross-env NODE_ENV=local cross-var ts-node node_modules/typeorm/cli.js migration:revert -d ./src/shared/db/connections/type.orm.database.migration.source.ts",
-    "seed:dev": "cross-env NODE_ENV=development ts-node ./src/shared/db/migrations/seeders/role.util.seeder.ts"
+    "migration:create": "cross-var ts-node node_modules/typeorm/cli.js migration:create ./src/infrastructure/migrations/$npm_config_name",
+    "migration:up:dev": "cross-env NODE_ENV=development cross-var ts-node node_modules/typeorm/cli.js migration:run -d ./src/shared/configs/typeorm/type.orm.database.migration.source.ts",
+    "migration:up:prod": "cross-env NODE_ENV=production cross-var ts-node node_modules/typeorm/cli.js migration:run -d ./src/shared/configs/typeorm/type.orm.database.migration.source.ts",
+    "migration:down:dev": "cross-env NODE_ENV=development cross-var ts-node node_modules/typeorm/cli.js migration:revert -d ./src/shared/configs/typeorm/type.orm.database.migration.source.ts",
+    "migration:up:local": "cross-env NODE_ENV=local cross-var ts-node node_modules/typeorm/cli.js migration:run -d ./src/shared/configs/typeorm/type.orm.database.migration.source.ts",
+    "migration:down:local": "cross-env NODE_ENV=local cross-var ts-node node_modules/typeorm/cli.js migration:revert -d ./src/shared/configs/typeorm/type.orm.database.migration.source.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^8.4.0",

@@ -1,13 +1,13 @@
-import { TypeOrmDatabaseConfig } from './shared/db/connections/type.orm.database.config';
 import schemaValidation from './shared/signatures/schema.validation';
 import { Module, ValidationPipe } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { APP_PIPE } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
-import { JwtConfig } from './shared/jwts/jwt.config';
 import { PassportModule } from './core/modules/passport/passport.module';
-import { TicketModule } from './ticket/ticket.module';
+import { JwtConfig } from './shared/configs/jwts/jwt.config';
+import { TypeOrmDatabaseConfig } from './shared/configs/typeorm/type.orm.database.config';
+import { TicketModule } from './core/modules/ticket/ticket.module';
 
 @Module({
   imports: [

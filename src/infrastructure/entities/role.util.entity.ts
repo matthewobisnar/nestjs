@@ -1,6 +1,5 @@
 import { BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { BaseActiveEntity } from "./base.entity";
-import { UserRoleEntity } from "./user.role.entity";
 
 @Entity({name: 'role_util_entity'})
 export class RoleUtilEntity extends BaseActiveEntity {

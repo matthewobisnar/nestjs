@@ -20,7 +20,7 @@ export class TypeOrmDatabaseConfig implements TypeOrmOptionsFactory {
             host: this.config.get<String>('DATABASE_HOST') as any,
             username: this.config.get<String>('DATABASE_USERNAME') as any,
             password: this.config.get<String>('DATABASE_PASSWORD') as any,
-            entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+            entities: [__dirname + '/../../../**/*.entity{.ts,.js}'],
             synchronize: false,
             logging: (isLoggingDefined ? this.config.get<string>('DATABASE_LOGGING').split(",") : []) as LoggerOptions
         }

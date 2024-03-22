@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity } from 'src/shared/db/entities/user.entity';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { SigninUserRequestDto } from 'src/shared/dtos/signin.user.request.dto';
 import { JwtService } from '@nestjs/jwt';
 import { AuthenticatedUserDto } from 'src/shared/dtos/authenticated.user.dto';
+import { UserEntity } from 'src/infrastructure/entities/user.entity';
 
 
 @Injectable()

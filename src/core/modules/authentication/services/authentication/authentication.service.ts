@@ -2,11 +2,11 @@ import { BadRequestException, ForbiddenException, Inject, Injectable, Logger, Un
 import { InjectRepository } from '@nestjs/typeorm';
 import { SigninUserRequestDto } from 'src/shared/dtos/signin.user.request.dto';
 import { SignupUserRequestDto } from 'src/shared/dtos/signup.user.request.dto';
-import { UserEntity } from 'src/shared/db/entities/user.entity';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { UserRoleEntity } from 'src/shared/db/entities/user.role.entity';
 import { JwtService } from '@nestjs/jwt';
+import { UserEntity } from 'src/infrastructure/entities/user.entity';
+import { UserRoleEntity } from 'src/infrastructure/entities/user.role.entity';
 
 @Injectable()
 export class AuthenticationService {

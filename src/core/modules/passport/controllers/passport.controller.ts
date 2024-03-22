@@ -6,8 +6,7 @@ import { SwaggerExceptionResponseDto } from 'src/shared/configs/swagger/swagger.
 import { PassportService } from '../services/passport/passport.service';
 import { Roles } from 'src/shared/decorators/roles.decorator';
 import { AuthJwtGuard } from '../strategies/jwt/auth.jwt.guard';
-import { UserService } from 'src/user/services/user/user.service';
-
+import { UserService } from '../../user/services/user/user.service';
 @ApiTags('Passport Authentication')
 @Controller('passport')
 export class PassportController {

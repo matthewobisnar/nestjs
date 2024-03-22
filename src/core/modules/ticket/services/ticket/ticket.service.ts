@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { TicketEntity } from 'src/shared/db/entities/ticket.entity';
-import { TicketStatus } from 'src/shared/db/entities/ticket.status.entity';
+import { TicketEntity } from 'src/infrastructure/entities/ticket.entity';
+import { TicketStatus } from 'src/infrastructure/entities/ticket.status.entity';
 import { CreateTicketDto } from 'src/shared/dtos/create.ticket.dto';
 import { Repository } from 'typeorm';
 

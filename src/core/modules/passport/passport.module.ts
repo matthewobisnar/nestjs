@@ -2,12 +2,12 @@ import { Module } from '@nestjs/common';
 import { PassportController } from './controllers/passport.controller';
 import { PassportService } from './services/passport/passport.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserEntity } from 'src/shared/db/entities/user.entity';
-import { UserRoleEntity } from 'src/shared/db/entities/user.role.entity';
-import { RoleUtilEntity } from 'src/shared/db/entities/role.util.entity';
 import { AuthLocalStrategy } from './strategies/local/auth.local.strategy';
 import { AuthJwtStrategy } from './strategies/jwt/auth.jwt.strategy';
-import { UserModule } from 'src/user/user.module';
+import { UserModule } from '../user/user.module';
+import { UserEntity } from 'src/infrastructure/entities/user.entity';
+import { UserRoleEntity } from 'src/infrastructure/entities/user.role.entity';
+import { RoleUtilEntity } from 'src/infrastructure/entities/role.util.entity';
 
 @Module({
   imports:[
