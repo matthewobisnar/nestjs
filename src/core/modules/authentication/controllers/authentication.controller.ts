@@ -7,6 +7,7 @@ import { LocalAuthGuard } from '../strategies/local/LocalAuthGuard';
 import { AuthJwtAccessGuard } from '../strategies/AuthJwt/JwtAuthGuard';
 import { TokenResponseDto } from 'src/shared/dtos/token.response.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { JwtRefreshTokenGuard } from '../strategies/RefreshJwt/JwtRefreshTokenGuard';
 
 @ApiTags('Authentication')
 @Controller('authentication')
@@ -35,12 +36,19 @@ export class AuthenticationController {
   }
 
   @Post('/refresh')
-  @UseGuards(AuthGuard('jwt-refresh'))
+  @UseGuards(AuthGuard('jwt-refresh'), JwtRefreshTokenGuard)
   @ApiBearerAuth()
   @ApiCreatedResponse()
   @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
   refresh(@Req() req) {
-    return req.user;
+
+    const user = { ...req.user };
+    delete user.exp;
+    delete user.type;
+    delete user.iat;
+    delete user.refreshToken;
+
+    return this.authenticationService.signIn(user).then(data => data as TokenResponseDto);
   }
 
 }

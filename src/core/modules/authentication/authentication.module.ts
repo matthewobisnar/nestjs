@@ -28,7 +28,7 @@ import { JwtModule } from '@nestjs/jwt';
   controllers: [AuthenticationController],
   providers: [
     AuthenticationService, 
-    StrategyLocal, 
+    StrategyLocal,
     AuthStrategyJwt, 
     RefreshTokenStrategy,
     JwtAccessConfig,
