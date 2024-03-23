@@ -40,7 +40,7 @@ export class AuthenticationController {
   @ApiCreatedResponse()
   @ApiUnauthorizedResponse({ type: SwaggerExceptionResponseDto })
   refresh(@Req() req) {
-    return req;
+    return req.user;
   }
 
 }
